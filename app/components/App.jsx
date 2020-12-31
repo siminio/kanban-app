@@ -10,17 +10,19 @@ export default class App extends React.Component {
       notes: [
         {
           id: uuid.v4(),
-          task: 'Learn React'
+          task: 'Learn React',
+          editing: false
         },
         {
           id: uuid.v4(),
-          task: 'Do laundry'
+          task: 'Do laundry',
+          editing: true
         }
       ]
     };
   }
   addNote = () => {
-      this.setState({notes: [...this.state.notes, {id: uuid.v4(), task: 'New task'}]})
+      this.setState({notes: [...this.state.notes, {id: uuid.v4(), task: 'New task', editing: false}]})
   }
 
   onDelete = (id) => {
