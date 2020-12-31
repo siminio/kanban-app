@@ -23,13 +23,17 @@ export default class App extends React.Component {
       this.setState({notes: [...this.state.notes, {id: uuid.v4(), task: 'New task'}]})
   }
 
+  onDelete = (id) => {
+    this.setState({notes: this.state.notes.filter(note => note.id !== id)})
+  }
+
   render() {
     const {notes} = this.state;
 
     return (
       <div>
         <button onClick={this.addNote}>+</button>
-        <Notes notes={notes} />
+        <Notes notes={notes} onDelete={this.onDelete}/>
       </div>
     );
   }
