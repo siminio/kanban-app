@@ -5,24 +5,7 @@ import connect from '../libs/connect';
 
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      notes: [
-        {
-          id: uuid.v4(),
-          task: 'Learn React',
-          editing: false
-        },
-        {
-          id: uuid.v4(),
-          task: 'Do laundry',
-          editing: true
-        }
-      ]
-    };
-  }
   addNote = () => {
       this.setState({notes: [...this.state.notes, {id: uuid.v4(), task: 'New task', editing: false}]})
   }
@@ -56,11 +39,10 @@ class App extends React.Component {
   }
 
   render() {
-    const {notes} = this.state;
+    const {notes} = this.props;
 
     return (
       <div>
-        {this.props.test}
         <button onClick={this.addNote}>+</button>
         <Notes notes={notes} onDelete={this.onDelete} onEdit={this.editNote} onNoteClick={this.activateEditNote}/>
       </div>
@@ -68,6 +50,6 @@ class App extends React.Component {
   }
 }
 
-export default connect(() => ({
-  test: 'test'
+export default connect(({notes}) => ({
+  notes
 }))(App)
