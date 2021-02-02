@@ -8,7 +8,7 @@ import connect from '../libs/connect';
 class App extends React.Component {
 
   addNote = () => {
-      this.setState({notes: [...this.state.notes, {id: uuid.v4(), task: 'New task', editing: false}]})
+    this.props.NoteActions.create({id: uuid.v4(), task: 'New task', editing: false});
   }
 
   onDelete = (id) => {
