@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   onDelete = (id) => {
-    this.setState({notes: this.state.notes.filter(note => note.id !== id)})
+    this.props.NoteActions.delete(id);
   }
 
   activateEditNote = (id) => {

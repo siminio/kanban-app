@@ -23,7 +23,7 @@ export default class NoteStore {
   update(note) {
     console.log('updated note', note);
   }
-  delete(note) {
-    console.log('deleted note', note);
+  delete(noteId) {
+    this.setState({notes: this.notes.filter(note => note.id !== noteId)})
   }
 }
